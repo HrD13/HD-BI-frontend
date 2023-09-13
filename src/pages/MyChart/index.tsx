@@ -1,11 +1,10 @@
-import { listMyChartByPageUsingPOST } from '@/services/hdbi/chartController';
+import {deleteChartUsingGET, listMyChartByPageUsingPOST, reGenChartUsingGET} from '@/services/hdbi/chartController';
 
 import { useModel } from '@@/exports';
-import { Avatar,Card,List,message,Result } from 'antd';
+import { Avatar,Button,Card,List,message,Result,Space } from 'antd';
 import Search from "antd/es/input/Search";
 import ReactECharts from 'echarts-for-react';
 import React,{ useEffect,useState } from 'react';
-
 /**
  * 我的图表页面
  * @constructor
@@ -24,6 +23,7 @@ const MyChartPage: React.FC = () => {
   const [chartList, setChartList] = useState<API.Chart[]>();
   const [total, setTotal] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
+  const [redoLoading, setRedoLoading] = useState<boolean>(false);
 
   const loadData = async () => {
     setLoading(true);
@@ -49,6 +49,31 @@ const MyChartPage: React.FC = () => {
       message.error('获取我的图表失败，' + e.message);
     }
     setLoading(false);
+  };
+
+  // 删除
+  const del = async (id: any) => {
+    const res = await deleteChartUsingGET({id:id});
+    if (res.code === 0) {
+      message.info('删除成功');
+    } else {
+      message.info('删除失败');
+    }
+    loadData();
+  };
+  // 重新生成
+  const redoGenChart = async (id: any) => {
+    const res = await reGenChartUsingGET({id:id});
+    if (res.code === 0) {
+      setRedoLoading(true);
+      message.info('已重新提交任务');
+    } else {
+      message.info('删除失败');
+    }
+    setTimeout(() => {
+      loadData();
+      setRedoLoading(false);
+    }, 10000);
   };
 
   useEffect(() => {
@@ -137,6 +162,10 @@ const MyChartPage: React.FC = () => {
                   </>
                 }
               </>
+              <Space wrap>
+                <Button type="primary" onClick={() => redoGenChart(item.id)} disabled={item.status===3?true:false} loading={redoLoading}>重新生成</Button>
+                <Button type="dashed" danger={true} onClick={() => del(item.id)}>删除</Button>
+              </Space>
             </Card>
           </List.Item>
         )}

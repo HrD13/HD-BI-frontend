@@ -99,8 +99,19 @@ declare namespace API {
     userId?: number;
   };
 
+  type deleteChartUsingGETParams = {
+    /** id */
+    id: number;
+  };
+
   type DeleteRequest = {
     id?: number;
+  };
+
+  type genChartByAiAsyncMqUsingPOSTParams = {
+    chartType?: string;
+    goal?: string;
+    name?: string;
   };
 
   type genChartByAiAsyncUsingPOSTParams = {
@@ -177,6 +188,11 @@ declare namespace API {
     searchCount?: boolean;
     size?: number;
     total?: number;
+  };
+
+  type reGenChartUsingGETParams = {
+    /** id */
+    id: number;
   };
 
   type uploadFileUsingPOSTParams = {
