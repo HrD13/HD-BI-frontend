@@ -149,6 +149,8 @@ const MyChartPage: React.FC = () => {
                     <div style={{ marginBottom: 16 }} />
                     <p>{'分析目标：' + item.goal}</p>
                     <div style={{ marginBottom: 16 }} />
+                    <p>{'分析结果：' + item.genResult}</p>
+                    <div style={{ marginBottom: 16 }} />
                     <ReactECharts option={item.genChart && JSON.parse(item.genChart)} />
                   </>
                 }

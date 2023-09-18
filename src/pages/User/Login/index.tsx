@@ -132,10 +132,10 @@ const Login: React.FC = () => {
                 key: 'account',
                 label: '账户密码登录',
               },
-              {
-                key: 'mobile',
-                label: '注册',
-              },
+              // {
+              //   key: 'mobile',
+              //   label: '注册',
+              // },
             ]}
           />
 
@@ -147,7 +147,7 @@ const Login: React.FC = () => {
                   size: 'large',
                   prefix: <UserOutlined />,
                 }}
-                placeholder={'请输入用户名'}
+                placeholder={'默认用户:admin'}
                 rules={[
                   {
                     required: true,
@@ -161,7 +161,7 @@ const Login: React.FC = () => {
                   size: 'large',
                   prefix: <LockOutlined />,
                 }}
-                placeholder={'请输入密码'}
+                placeholder={'默认密码:12345678'}
                 rules={[
                   {
                     required: true,
@@ -173,52 +173,6 @@ const Login: React.FC = () => {
           )}
 
           {/*{status === 'error' && loginType === 'mobile' && <LoginMessage content="验证码错误" />}*/}
-          {type === 'mobile' && (
-            <>
-              <ProFormText
-                name="userAccount"
-                fieldProps={{
-                  size: 'large',
-                  prefix: <UserOutlined />,
-                }}
-                placeholder={'请输入用户名'}
-                rules={[
-                  {
-                    required: true,
-                    message: '用户名是必填项！',
-                  },
-                ]}
-              />
-              <ProFormText.Password
-                name="userPassword"
-                fieldProps={{
-                  size: 'large',
-                  prefix: <LockOutlined />,
-                }}
-                placeholder={'请输入密码'}
-                rules={[
-                  {
-                    required: true,
-                    message: '密码是必填项！',
-                  },
-                ]}
-              />
-              <ProFormText.Password
-                name="checkPassword"
-                fieldProps={{
-                  size: 'large',
-                  prefix: <LockOutlined />,
-                }}
-                placeholder={'请再次确认密码'}
-                rules={[
-                  {
-                    required: true,
-                    message: '密码是必填项！',
-                  },
-                ]}
-              />
-            </>
-          )}
         </LoginForm>
       </div>
       <Footer />

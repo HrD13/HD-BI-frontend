@@ -13,8 +13,10 @@ export default defineConfig({
    * @description 让 build 之后的产物包含 hash 后缀。通常用于增量发布和避免浏览器加载缓存。
    * @doc https://umijs.org/docs/api/config#hash
    */
-  hash: true,
-
+  // hash: true,
+  history: { type: 'hash' },
+  // base: '/hdbi/',
+  // publicPath: '/hdbi/',
   /**
    * @name 兼容性设置
    * @description 设置 ie11 不一定完美兼容，需要检查自己使用的所有依赖
@@ -55,6 +57,13 @@ export default defineConfig({
    * @doc 代理配置 https://umijs.org/docs/api/config#proxy
    */
   proxy: proxy[REACT_APP_ENV as keyof typeof proxy],
+  // proxy: {
+  //   '/api': {
+  //     target: 'http://127.0.0.1:8001/',
+  //     changeOrigin: true,
+  //     pathRewrite: { '^/server': '' },
+  //   },
+  // },
   /**
    * @name 快速热更新配置
    * @description 一个不错的热更新组件，更新时可以保留 state

@@ -1,6 +1,6 @@
 # 智能BI
-
-This project is initialized with [智能BI](https://pro.ant.design). Follow is the quick guide for how to use.
+* 后端代码地址：https://github.com/HrD13/HD-BI
+* HD智能BI系统前端代码，模板是ant design pro(https://pro.ant.design).
 
 ## Environment Prepare
 
@@ -16,16 +16,11 @@ or
 yarn
 ```
 
-## Provided Scripts
-
-智能BI provides some useful script to help you quick start and build with web project, code style check and test.
-
-Scripts provided in `package.json`. It's safe to modify or add additional script:
 
 ### Start project
 
 ```bash
-npm start
+npm run dev
 ```
 
 ### Build project

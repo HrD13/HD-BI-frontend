@@ -81,7 +81,9 @@ const AddChartAsync: React.FC = () => {
               <Button icon={<UploadOutlined />}>上传 CSV 文件</Button>
             </Upload>
           </Form.Item>
-
+          <Form.Item label="示例文件">
+            <a href="/template/销售额统计分析.xlsx">销售额统计分析</a>
+          </Form.Item>
           <Form.Item wrapperCol={{ span: 16, offset: 4 }}>
             <Space>
               <Button type="primary" htmlType="submit" loading={submitting} disabled={submitting}>
